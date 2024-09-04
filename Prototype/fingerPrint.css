@@ -1,0 +1,128 @@
+/* General Reset */
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: #ececec;
+}
+
+/* Header Styling */
+.header {
+  text-align: center;
+  margin-top: 60px; /* Adjusted to show the header */
+}
+
+.header h1 {
+  font-size: 24px; /* Medium-sized header */
+  margin: 5px 0; /* Small margin between the two headers */
+  color: #333; /* Darker color for better visibility */
+}
+
+.header .inspiration {
+  margin-top: 5px; /* Small margin for the inspiration text */
+  font-size: 14px; /* Medium font size for inspiration text */
+  color: #555; /* Subtle color for inspiration text */
+}
+
+/* Center Div Styling */
+.center {
+  position: absolute;
+  top: 60%; /* Centering the box */
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 90%;
+  max-width: 400px; /* Keeping the box width reasonable */
+}
+
+/* White Box Styling */
+.white-box {
+  width: 100%;
+  padding: 40px;
+  background-color: #fff;
+  border: 60px springgreen #060606;
+  border-radius: 40px;
+  box-shadow: 30px 4px 10px rgba(0.5, 1.0, 0.5, 0.1);
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.white-box h2 {
+  font-size: 18px; /* Medium-sized text inside the box */
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.white-box .fingerprint {
+  width: 100px; /* Adjusted size of the fingerprint */
+  height: 100px;
+  margin-bottom: 20px;
+}
+
+.white-box .scan,
+.white-box .scan-success {
+  font-size: 14px; /* Medium-sized text for scanning */
+  color: #777;
+  margin-top: 15px;
+}
+
+/* Form Styling */
+.new-form {
+  margin-top: 20px;
+}
+
+.new-form label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 14px;
+  color: #333;
+}
+
+.new-form input {
+  width: 100%;
+  padding: 8px;
+  font-size: 14px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  margin-bottom: 10px;
+}
+
+.new-form button {
+  padding: 10px 20px;
+  font-size: 14px;
+  color: #fff;
+  background-color: #2d7e1b;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.new-form button:hover {
+  background-color: #246215;
+}
+
+#error-message {
+  font-size: 14px;
+  color: red;
+  margin-top: 10px;
+}
+
+/* Animation and Active States */
+.fingerprint.active path.clone {
+  stroke-dashoffset: 0;
+  transition: stroke-dashoffset 2s linear;
+}
+
+.center.success .scan {
+  display: none;
+}
+
+.center.success .scan-success {
+  display: block;
+  color: #2d7e1b;
+  font-weight:bold;
+}

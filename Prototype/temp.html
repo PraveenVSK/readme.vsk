@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Details</title>
+  <link rel="stylesheet" href="redashboard.css">
+  <style>
+    body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #e9ecef;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.dashboard {
+    display: flex;
+    flex-direction: row;
+    padding: 20px;
+    max-width: 1000px;
+    width: 100%;
+    background-color: #aad8fd;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.left-panel {
+    width: 35%;
+    padding: 15px;
+    border-right: 2px solid #0022ff;
+    background-color: #ffffff;
+}
+
+.left-panel img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    border: 2px solid #dee2e6;
+}
+
+.left-panel .details {
+    margin-top: 15px;
+}
+
+.left-panel .details p {
+    margin: 8px 0;
+    font-size: 16px;
+    line-height: 1.4;
+}
+
+.right-panel {
+    width: 65%;
+    padding: 15px;
+}
+
+.right-panel h2 {
+    margin-bottom: 15px;
+    font-size: 24px;
+    color: #2a2d30;
+    border-bottom: 2px solid #dee2e6;
+    padding-bottom: 10px;
+}
+
+.excel-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+.excel-table th, .excel-table td {
+    border: 1px solid #dee2e6;
+    padding: 10px;
+    text-align: center;
+    font-size: 14px;
+    background-color: #ffffff;
+}
+
+.excel-table th {
+    background-color: #87c0f8;
+    color: #212529;
+}
+
+.excel-table td {
+    color: #495057;
+}
+
+.excel-table .month {
+    text-align: left;
+    background-color: #f8f9fa;
+    font-weight: bold;
+}
+
+.button-container {
+    margin-top: 15px;
+    text-align: center;
+}
+
+.redirect-button {
+    padding: 8px 16px;
+    font-size: 14px;
+    color: #ffffff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.redirect-button:hover {
+    background-color: #0056b3;
+}
+  </style>
+</head>
+<body>
+  <div class="dashboard">
+    <div class="left-panel">
+        <img id="user-photo" src="https://via.placeholder.com/300" alt="Person's Photo">
+        <div class="details">
+          <p><strong>ID:</strong> <span id="user-id"></span></p>
+          <p><strong>Name:</strong> <span id="user-name"></span></p>
+          <p><strong>Age:</strong> <span id="user-age"></span></p>
+          <p><strong>Blood Group:</strong> <span id="user-bloodGroup"></span></p>
+          <p><strong>Aadhar Number:</strong> <span id="user-phoneNumber"></span></p>
+        </div>
+    </div>
+    <div class="right-panel">
+      <h2>Monthly Activity Overview</h2>
+      <p>The limitation of every month is : 12 bottle</p>
+      <p>The limitation of every week is : 3 bottle</p>
+      <p><strong>Month Total :</strong> <span id="month"></span></p>
+      <table class="excel-table">
+        <tr>
+          <th>Month</th>
+          <th>Week 1</th>
+          <th>Week 2</th>
+          <th>Week 3</th>
+          <th>Week 4</th>
+        </tr>
+        <tr>
+          <td class="month">January</td>
+          <td id="jan-w1"></td>
+          <td id="jan-w2"></td>
+          <td id="jan-w3"></td>
+          <td id="jan-w4"></td>
+        </tr>
+        <tr>
+          <td class="month">February</td>
+          <td id="feb-w1"></td>
+          <td id="feb-w2"></td>
+          <td id="feb-w3"></td>
+          <td id="feb-w4"></td>
+        </tr>
+        <tr>
+          <td class="month">March</td>
+          <td id="mar-w1"></td>
+          <td id="mar-w2"></td>
+          <td id="mar-w3"></td>
+          <td id="mar-w4"></td>
+        </tr>
+        <tr>
+          <td class="month">April</td>
+          <td id="apr-w1"></td>
+          <td id="apr-w2"></td>
+          <td id="apr-w3"></td>
+          <td id="apr-w4"></td>
+        </tr>
+        <tr>
+          <td class="month">May</td>
+          <td id="may-w1"></td>
+          <td id="may-w2"></td>
+          <td id="may-w3"></td>
+          <td id="may-w4"></td>
+        </tr>
+        <tr>
+          <td class="month">June</td>
+          <td id="jun-w1"></td>
+          <td id="jun-w2"></td>
+          <td id="jun-w3"></td>
+          <td id="jun-w4"></td>
+        </tr>
+        <tr>
+          <td class="month">July</td>
+          <td id="jul-w1"></td>
+          <td id="jul-w2"></td>
+          <td id="jul-w3"></td>
+          <td id="jul-w4"></td>
+        </tr>
+        <tr>
+          <td class="month">August</td>
+          <td id="aug-w1"></td>
+          <td id="aug-w2"></td>
+          <td id="aug-w3"></td>
+          <td id="aug-w4"></td>
+        </tr>
+      </table>
+      
+      <!-- Button to redirect to login page -->
+      <div class="button-container">
+        <button class="redirect-button" onclick="redirectToLogin()">Go to Login Page</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Sample data list
+    const dataList = [
+  { name: 'Jane Smith', id: '1234', bloodGroup: 'O+', phoneNumber: '1234567890', age: '29', photo: 'https://example.com/jane.jpg', monthTotal: '8', jan: {w1: '2', w2: '1', w3: '3', w4: '2'}, feb: {w1: '1', w2: '3', w3: '2', w4: '1'}, mar: {w1: '3', w2: '2', w3: '1', w4: '2'}, apr: {w1: '0', w2: '1', w3: '2', w4: '1'}, may: {w1: '3', w2: '1', w3: '2', w4: '3'}, jun: {w1: '1', w2: '2', w3: '3', w4: '2'}, jul: {w1: '3', w2: '2', w3: '2', w4: '1'}, aug: {w1: '2', w2: '1', w3: '3', w4: '2'} },
+  { name: 'John Doe', id: '9012', bloodGroup: 'B+', phoneNumber: '157809876548', age: '28', photo: 'https://upload.wikimedia.org/wikipedia/commons/4/4d/John_Doe.jpg', monthTotal: '7', jan: {w1: '2', w2: '3', w3: '2', w4: '0'}, feb: {w1: '3', w2: '2', w3: '1', w4: '1'}, mar: {w1: '0', w2: '2', w3: '2', w4: '3'}, apr: {w1: '3', w2: '3', w3: '2', w4: '1'}, may: {w1: '2', w2: '2', w3: '1', w4: '2'}, jun: {w1: '1', w2: '3', w3: '2', w4: '1'}, jul: {w1: '3', w2: '2', w3: '3', w4: '3'}, aug: {w1: '2', w2: '1', w3: '3', w4: '2'} },
+  
+  // New User Data Added Below
+  { name: 'Santhosh', id: '338', bloodGroup: 'A+', phoneNumber: '985728301830', age: '45', photo: 'https://media.licdn.com/dms/image/v2/D5603AQHyjGOrVPPRJw/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1722080880134?e=1730937600&v=beta&t=csSFSLeSTOLyV-BiCVNJcWc1nzb7U8PKPcIAHcsuepU', monthTotal: '12', jan: {w1: '3', w2: '3', w3: '3', w4: '3'}, feb: {w1: '3', w2: '3', w3: '3', w4: '3'}, mar: {w1: '3', w2: '3', w3: '3', w4: '3'}, apr: {w1: '3', w2: '3', w3: '3', w4: '3'}, may: {w1: '3', w2: '3', w3: '3', w4: '3'}, jun: {w1: '3', w2: '3', w3: '3', w4: '3'}, jul: {w1: '3', w2: '3', w3: '3', w4: '3'}, aug: {w1: '3', w2: '3', w3: '3', w4: '3'} },
+  { name: 'Rafael', id: '318', bloodGroup: 'B+', phoneNumber: '987654321234', age: '23', photo: 'https://media.licdn.com/dms/image/v2/D5603AQHMi_hQdr0DSg/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1666875167332?e=1730937600&v=beta&t=6PjenlD61nUQNMcvHB6UYHKjJdGXRgZER_MCc5M7OzE', monthTotal: '8', jan: {w1: '3', w2: '3', w3: '0', w4: '2'}, feb: {w1: '3', w2: '3', w3: '0', w4: '2'}, mar: {w1: '3', w2: '3', w3: '0', w4: '2'}, apr: {w1: '3', w2: '3', w3: '0', w4: '2'}, may: {w1: '3', w2: '3', w3: '0', w4: '2'}, jun: {w1: '3', w2: '3', w3: '0', w4: '2'}, jul: {w1: '3', w2: '3', w3: '0', w4: '2'}, aug: {w1: '3', w2: '3', w3: '0', w4: '2'} },
+  { name: 'Murali', id: '291', bloodGroup: 'A-', phoneNumber: '987865342457', age: '20', photo: 'https://media.licdn.com/dms/image/v2/D5603AQFAJvAlemYd2w/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1725427540977?e=1730937600&v=beta&t=rXdWTU1NAeJ31MuCs6K-bY8o7iSrn5OxNZrSoQU5L4E', monthTotal: '10', jan: {w1: '3', w2: '3', w3: '2', w4: '2'}, feb: {w1: '3', w2: '3', w3: '2', w4: '2'}, mar: {w1: '3', w2: '3', w3: '2', w4: '2'}, apr: {w1: '3', w2: '3', w3: '2', w4: '2'}, may: {w1: '3', w2: '3', w3: '2', w4: '2'}, jun: {w1: '3', w2: '3', w3: '2', w4: '2'}, jul: {w1: '3', w2: '3', w3: '2', w4: '2'}, aug: {w1: '3', w2: '3', w3: '2', w4: '2'} },
+  { name: 'Rajesh', id: '325', bloodGroup: 'B+', phoneNumber: '345654345678', age: '27', photo: 'https://media.licdn.com/dms/image/v2/D5603AQGNkRsWfUSWzQ/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1725427448107?e=1730937600&v=beta&t=eqUNM4NRmokMrFpl3xXT0pxgaIATxG8NKGbeQN9Zm9E', monthTotal: '12', jan: {w1: '3', w2: '3', w3: '3', w4: '3'}, feb: {w1: '3', w2: '3', w3: '3', w4: '3'}, mar: {w1: '3', w2: '3', w3: '3', w4: '3'}, apr: {w1: '3', w2: '3', w3: '3', w4: '3'}, may: {w1: '3', w2: '3', w3: '3', w4: '3'}, jun: {w1: '3', w2: '3', w3: '3', w4: '3'}, jul: {w1: '3', w2: '3', w3: '3', w4: '3'}, aug: {w1: '3', w2: '3', w3: '3', w4: '3'} }
+
+    ];
+
+    // Get user data by name
+    function getUserData(name) {
+      return dataList.find(user => user.name === name);
+    }
+
+    // Function to populate user details
+    function populateUserDetails(user) {
+      document.getElementById('user-name').textContent = user.name;
+      document.getElementById('user-id').textContent = user.id;
+      document.getElementById('user-age').textContent = user.age;
+      document.getElementById('user-bloodGroup').textContent = user.bloodGroup;
+      document.getElementById('user-phoneNumber').textContent = user.phoneNumber;
+      document.getElementById('user-photo').src = user.photo;
+      document.getElementById('month').textContent = user.monthTotal;
+
+      // Populate table with weekly data for each month
+      document.getElementById('jan-w1').textContent = user.jan.w1;
+      document.getElementById('jan-w2').textContent = user.jan.w2;
+      document.getElementById('jan-w3').textContent = user.jan.w3;
+      document.getElementById('jan-w4').textContent = user.jan.w4;
+
+      document.getElementById('feb-w1').textContent = user.feb.w1;
+      document.getElementById('feb-w2').textContent = user.feb.w2;
+      document.getElementById('feb-w3').textContent = user.feb.w3;
+      document.getElementById('feb-w4').textContent = user.feb.w4;
+
+      document.getElementById('mar-w1').textContent = user.mar.w1;
+      document.getElementById('mar-w2').textContent = user.mar.w2;
+      document.getElementById('mar-w3').textContent = user.mar.w3;
+      document.getElementById('mar-w4').textContent = user.mar.w4;
+
+      document.getElementById('apr-w1').textContent = user.apr.w1;
+      document.getElementById('apr-w2').textContent = user.apr.w2;
+      document.getElementById('apr-w3').textContent = user.apr.w3;
+      document.getElementById('apr-w4').textContent = user.apr.w4;
+
+      document.getElementById('may-w1').textContent = user.may.w1;
+      document.getElementById('may-w2').textContent = user.may.w2;
+      document.getElementById('may-w3').textContent = user.may.w3;
+      document.getElementById('may-w4').textContent = user.may.w4;
+
+      document.getElementById('jun-w1').textContent = user.jun.w1;
+      document.getElementById('jun-w2').textContent = user.jun.w2;
+      document.getElementById('jun-w3').textContent = user.jun.w3;
+      document.getElementById('jun-w4').textContent = user.jun.w4;
+
+      document.getElementById('jul-w1').textContent = user.jul.w1;
+      document.getElementById('jul-w2').textContent = user.jul.w2;
+      document.getElementById('jul-w3').textContent = user.jul.w3;
+      document.getElementById('jul-w4').textContent = user.jul.w4;
+
+      document.getElementById('aug-w1').textContent = user.aug.w1;
+      document.getElementById('aug-w2').textContent = user.aug.w2;
+      document.getElementById('aug-w3').textContent = user.aug.w3;
+      document.getElementById('aug-w4').textContent = user.aug.w4;
+    }
+
+    // Example: Automatically populate user details on page load
+    window.onload = function() {
+      const user = getUserData('Jane Smith');
+      populateUserDetails(user);
+    };
+
+    // Function to redirect to login page
+    function redirectToLogin() {
+      window.location.href = "login.html"; // Change this to your login page URL
+    }
+  </script>
+</body>
+</html>
