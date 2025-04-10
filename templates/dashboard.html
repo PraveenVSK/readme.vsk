@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deepfake Image Analyzer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Dark Mode Toggle -->
+    <div class="theme-toggle">
+        <input type="checkbox" id="darkmode-toggle"/>
+        <label for="darkmode-toggle">
+            <i class="fas fa-moon"></i>
+            <i class="fas fa-sun"></i>
+        </label>
+    </div>
+
+    <!-- Navigation Bar -->
+    <nav class="nav-bar">
+        <ul class="nav-list">
+            <li class="nav-item">
+                <a href="#analyzer" class="nav-link">Analyzer</a>
+            </li>
+            <li class="nav-item">
+                <a href="#deepfake-identification" class="nav-link">Deepfake Detection</a>
+            </li>
+            <li class="nav-item">
+                <a href="#morphing" class="nav-link">Face Morphing</a>
+            </li>
+            <li class="nav-item">
+                <a href="#technology" class="nav-link">Technology</a>
+            </li>
+            <li class="nav-item">
+                <a href="{{ url_for('logout') }}" class="nav-link">Logout</a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Rest of your HTML remains exactly the same -->
+    <div id="analyzer" class="dashboard-container">
+        <h1>Deepfake Analyzer</h1>
+
+        <div class="upload-section">
+            <input type="file" id="imageFile" class="file-input" accept="image/*" style="display: none;">
+            <button id="uploadBtn" class="upload-btn">Upload Image</button>
+        </div>
+
+        <div class="preview-container">
+            <img id="previewImage" class="preview-image" alt="Uploaded Image" style="display: none;">
+        </div>
+
+        <div class="analyze-section">
+            <center><button id="analyzeBtn" class="upload-btn" style="display: none;">Analyze Image</button></center>
+        </div>
+
+        <div class="loading" id="loading" style="display: none;">
+            <div class="loading-text">Analyzing image... Please wait...</div>
+        </div>
+
+        <div class="result-section" id="result" style="display: none;"></div>
+
+        <!-- Article Sections -->
+        <div id="deepfake-identification" class="article-section">
+            <h2>How Deepfake Identification Works</h2>
+            <p>Deepfake detection is a sophisticated process that involves multiple layers of analysis:</p>
+            <ul>
+                <li><strong>Visual Inconsistencies:</strong> Detection of unnatural facial movements, lighting inconsistencies, and blending issues.</li>
+                <li><strong>Neural Network Analysis:</strong> Advanced AI algorithms that analyze facial features and expressions.</li>
+                <li><strong>Metadata Examination:</strong> Analysis of image properties and digital signatures.</li>
+                <li><strong>Temporal Coherence:</strong> Checking for consistency across multiple frames or images.</li>
+            </ul>
+            <img src="https://pub.mdpi-res.com/applsci/applsci-12-09820/article_deploy/html/images/applsci-12-09820-g001.png?1664525355" 
+                 alt="Deepfake Detection Process" 
+                 class="article-image">
+        </div>
+
+        <div id="morphing" class="article-section">
+            <h2>Face Morphing Technology</h2>
+            <p>Face morphing is a technique that creates a seamless transition between two faces:</p>
+            <ul>
+                <li><strong>Feature Point Mapping:</strong> Identification of key facial landmarks.</li>
+                <li><strong>Triangulation:</strong> Creation of mesh networks for smooth transitions.</li>
+                <li><strong>Blending Algorithms:</strong> Advanced techniques for natural-looking transitions.</li>
+                <li><strong>Quality Assurance:</strong> Verification of realistic results and detection of artifacts.</li>
+            </ul>
+        </div>
+
+        <div id="technology" class="article-section">
+            <h2>Technology Behind Detection</h2>
+            <p>Our deepfake detection system employs state-of-the-art technologies:</p>
+            <ul>
+                <li><strong>Convolutional Neural Networks:</strong> Deep learning models specifically trained for image analysis.</li>
+                <li><strong>Frequency Domain Analysis:</strong> Detection of manipulation artifacts in image frequencies.</li>
+                <li><strong>Biometric Verification:</strong> Checking for consistency in biological features.</li>
+                <li><strong>Machine Learning Models:</strong> Continuous learning and adaptation to new deepfake techniques.</li>
+            </ul>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='dashboard.js') }}"></script>
+    <script>
+        // Dark mode toggle functionality
+        document.getElementById('darkmode-toggle').addEventListener('change', function() {
+            document.body.classList.toggle('dark-mode');
+            localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
+        });
+
+        // Check for saved dark mode preference
+        if (localStorage.getItem('darkMode') === 'true') {
+            document.body.classList.add('dark-mode');
+            document.getElementById('darkmode-toggle').checked = true;
+        }
+    </script>
+</body>
+</html>
+
+
+
+
